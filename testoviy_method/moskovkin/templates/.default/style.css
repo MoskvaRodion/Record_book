@@ -1,0 +1,7 @@
+.semestr{
+    margin: 20px 0 10px;
+}
+.semestr-table td, .semestr-table th{
+    padding: 7px 8px;
+    border: 1px solid black;
+}
