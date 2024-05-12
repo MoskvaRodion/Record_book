@@ -3,25 +3,25 @@
 @import "variables.css";
 
 .fiveOrFour,
-three,
-two {
+.three,
+.two {
   padding: 8px 16px;
   border-radius: 26px;
 }
 
 .fiveOrFour {
   background-color: #effae9;
-  color: #effae9;
+  color: #43b000;
 }
 
 .three {
   background-color: #fff8dd;
-  color: #fff8dd;
+  color: #cea40e;
 }
 
 .two {
   background-color: #ffe3dd;
-  color: #ffe3dd;
+  color: #c90000;
 }
 
 * {
@@ -30,10 +30,6 @@ two {
 
 body {
   font-family: "Inter", sans-serif;
-}
-
-.wrapper {
-  padding: 40px 60px 60px 60px;
 }
 
 .main_content {
@@ -59,14 +55,7 @@ body {
 
   border-radius: var(--BorderRadiusblocks);
   background: var(--leftContentBg);
-  padding: 30px 40px 20px 40px;
-}
-
-.main_content-leftInternal__img {
-  width: 145px;
-  height: 145px;
-  object-fit: cover;
-  margin-bottom: 8px;
+  padding: 30px 20px 20px 20px;
 }
 
 .main_content-leftInternal__group {
@@ -108,7 +97,7 @@ body {
   width: 100%;
   background: var(--BgFullHeight);
   border-radius: var(--BorderRadiusblocks);
-  padding: 32px 24px 24px 24px;
+  padding: 32px 12px 24px 12px;
 }
 
 .main_content-rightInternal {
@@ -135,7 +124,7 @@ table {
 
   display: flex;
   flex-direction: column;
-  padding: 20px 40px 30px 30px;
+  padding: 20px 15px 30px 15px;
   max-height: 400px;
   overflow-y: auto;
 
@@ -163,7 +152,7 @@ th {
 
 table tr {
   display: grid;
-  grid-template-columns: auto 410px auto auto auto;
+  grid-template-columns: auto 340px auto auto auto;
   width: 100%;
   text-align: center;
   counter-increment: table;
@@ -171,7 +160,6 @@ table tr {
 
 table td {
   padding: 20px 16px;
-  max-width: 500px;
   hyphens: auto;
   justify-items: center;
 }
@@ -181,9 +169,9 @@ tbody tr:nth-child(odd) {
   border-radius: var(--RadiusBorderTable);
 }
 
-tbody tr td:nth-child(2) {
+/* tbody tr td:nth-child(2) {
   text-align: left;
-}
+} */
 
 tbody tr td:first-child:before {
   content: counter(table);
