@@ -1,0 +1,11 @@
+:root {
+  --leftContentBgFullHeight: rgba(217, 217, 217, 0.2);;
+  --leftContentColorFullHeight: #ffffff;
+  --leftContentBg: #0071f5;
+  --leftContentBgOpacityItems: rgba(255, 255, 255, 0.1);
+
+  --BorderRadiusblocks: 16px;
+  --BorderRadiusItems: 41px;
+
+  --fontSizeTitle: 32px;
+}
