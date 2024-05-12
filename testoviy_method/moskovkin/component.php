@@ -36,6 +36,7 @@ if ($studentSect){
     {
         $arResult[] = $arRes;
     }
+
 }
 else {
     $arResult= [];

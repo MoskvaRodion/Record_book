@@ -1,0 +1,17 @@
+:root {
+  --BgFullHeight: rgba(217, 217, 217, 0.2);
+
+  --leftContentColorItems: #ffffff;
+  --leftContentBg: #0071f5;
+  --leftContentBgOpacityItems: rgba(255, 255, 255, 0.1);
+
+  --BgTable: #ffff;
+  --ColorBorderTable: rgba(0, 0, 0, 0.4);
+  --RadiusBorderTable: 8px;
+
+  --BorderRadiusblocks: 16px;
+  --BorderRadiusItems: 41px;
+  --BorderRadiusTable: 16px;
+
+  --fontSizeTitle: 32px;
+}
