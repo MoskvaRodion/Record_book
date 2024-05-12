@@ -141,7 +141,7 @@ thead {
   top: -21px;
   background-color: white;
   padding-top: 15px;
-  z-index: 1;
+  z-index: -1;
 }
 
 th {
@@ -152,7 +152,7 @@ th {
 
 table tr {
   display: grid;
-  grid-template-columns: auto 340px auto auto auto;
+  grid-template-columns: auto 300px auto auto auto;
   width: 100%;
   text-align: center;
   counter-increment: table;
@@ -164,14 +164,14 @@ table td {
   justify-items: center;
 }
 
+tbody td {
+  align-self: center;
+}
+
 tbody tr:nth-child(odd) {
   background: #f7f7f7;
   border-radius: var(--RadiusBorderTable);
 }
-
-/* tbody tr td:nth-child(2) {
-  text-align: left;
-} */
 
 tbody tr td:first-child:before {
   content: counter(table);
