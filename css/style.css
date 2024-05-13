@@ -120,6 +120,7 @@ body {
 .table-estimation {
   border-radius: var(--BorderRadiusTable);
   width: 100%;
+  max-width: 675px;
   background: var(--BgTable);
 
   display: flex;
@@ -132,7 +133,10 @@ body {
   scrollbar-width: thin;
   scroll-behavior: smooth;
 
-  counter-reset: schetchik;
+  counter-reset: table;
+
+  position: relative;
+  z-index: 1;
 }
 
 .table-estimation thead {
@@ -145,11 +149,11 @@ body {
 }
 
 .table-estimation th {
-  border-bottom: 1px solid var(--ColorBorderTable);
   padding-bottom: 15px;
   padding-left: 25px;
   vertical-align: middle;
   border: none;
+  border-bottom: 1px solid var(--ColorBorderTable);
 }
 
 .table-estimation tr {
@@ -157,7 +161,12 @@ body {
   grid-template-columns: auto 300px auto auto auto;
   width: 100%;
   text-align: center;
+}
+
+.table-estimation tbody tr {
   counter-increment: table;
+  z-index: -2;
+  position: relative;
 }
 
 .table-estimation td {
@@ -166,9 +175,6 @@ body {
   justify-items: center;
   vertical-align: middle;
   border: none;
-}
-
-.table-estimation td {
   align-self: center;
 }
 
@@ -179,5 +185,5 @@ body {
 
 .table-estimation tbody tr td:first-child:before {
   content: counter(table);
-  opacity: 30%;
+  opacity: 40%;
 }
