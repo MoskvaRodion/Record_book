@@ -56,6 +56,7 @@ body {
   border-radius: var(--BorderRadiusblocks);
   background: var(--leftContentBg);
   padding: 30px 20px 20px 20px;
+  max-width: 270px;
 }
 
 .main_content-leftInternal__group {
@@ -120,7 +121,7 @@ body {
 .table-estimation {
   border-radius: var(--BorderRadiusTable);
   width: 100%;
-  max-width: 675px;
+  max-width: 650px;
   background: var(--BgTable);
 
   display: flex;
@@ -158,7 +159,7 @@ body {
 
 .table-estimation tr {
   display: grid;
-  grid-template-columns: auto 300px auto auto auto;
+  grid-template-columns: auto 270px auto auto auto;
   width: 100%;
   text-align: center;
 }
