@@ -1,4 +1,8 @@
-<? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?
+
+use function PHPSTORM_META\type;
+
+ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 $rsUser = CUser::GetByID($arParams["USER_ID"]);
 
 while($arUser = $rsUser->Fetch()){
@@ -7,18 +11,30 @@ while($arUser = $rsUser->Fetch()){
 
 $group = $arParam["UF_GROUP"];
 $student = $arParam["LAST_NAME"]." ". $arParam["NAME"]." ".$arParam["SECOND_NAME"];
-
+function colotEstimation($estimation){
+  switch($estimation){
+    case "5":
+      return "fiveOrFour";
+      break;
+    case "4":
+      return "fiveOrFour";
+      break;
+    case "3":
+      return "three";
+      break;
+    case "2":
+      return "two";
+      break;
+    default:
+      return "";
+  }
+}
 ?>
 <main>
       <div class="wrapper">
         <div class="main_content">
           <div class="main_content-left">
             <div class="main_content-leftInternal">
-              <!-- <img
-                src="img/logoUser.png"
-                alt="User"
-                class="main_content-leftInternal__img"
-              /> -->
               <h1 class="main_content-leftInternal__title"><?=$student?></h1>
               <p class="main_content-leftInternal__group"><?=$group?></p>
               <div class="main_content-leftInternal__profession">
@@ -49,7 +65,7 @@ if (!empty($arResult)){
                   <td></th>
                   <td><?=$arSubGrade['subject'];?></td>
                   <td>Курсовая работа</td>
-                  <td><span class="two"><?=$arSubGrade['estimation'];?></span></td>
+                  <td><span class="<?= colotEstimation($arSubGrade['estimation']); ?>"><?=$arSubGrade['estimation'];?></span></td>
                   <td>Гренадерова С. В.</td>
                 </tr>
             <?}?>
