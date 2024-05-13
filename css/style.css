@@ -39,7 +39,7 @@ body {
 }
 
 .main_content-left {
-  max-width: 313px;
+  max-width: 280px;
   width: 100%;
   color: var(--leftContentColorItems);
   height: inherit;
@@ -57,7 +57,7 @@ body {
   border-radius: var(--BorderRadiusblocks);
   background: var(--leftContentBg);
   padding: 30px 10px 20px 10px;
-  max-width: 270px;
+  max-width: inherit;
 }
 
 .main_content-leftInternal__group {
@@ -73,6 +73,7 @@ body {
   white-space: wrap;
   max-width: 234px;
   width: 100%;
+  hyphens: auto;
 }
 
 .main_content-leftInternal__profession {
@@ -122,7 +123,7 @@ body {
 .table-estimation {
   border-radius: var(--BorderRadiusTable);
   width: 100%;
-  max-width: 650px;
+  max-width: 600px;
   background: var(--BgTable);
 
   display: flex;
@@ -138,7 +139,7 @@ body {
   counter-reset: table;
 
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 .table-estimation thead {
@@ -160,7 +161,7 @@ body {
 
 .table-estimation tr {
   display: grid;
-  grid-template-columns: auto 210px auto auto auto;
+  grid-template-columns: auto 200px auto auto auto;
   width: 100%;
   text-align: center;
 }
