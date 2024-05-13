@@ -117,7 +117,7 @@ body {
   align-self: start;
 }
 
-table {
+.table-estimation {
   border-radius: var(--BorderRadiusTable);
   width: 100%;
   background: var(--BgTable);
@@ -141,16 +141,18 @@ thead {
   top: -21px;
   background-color: white;
   padding-top: 15px;
-  z-index: -1;
+  z-index: 0;
 }
 
 th {
   border-bottom: 1px solid var(--ColorBorderTable);
   padding-bottom: 15px;
   padding-left: 25px;
+  vertical-align: middle;
+  border: none;
 }
 
-table tr {
+.table-estimation tr {
   display: grid;
   grid-template-columns: auto 300px auto auto auto;
   width: 100%;
@@ -158,22 +160,24 @@ table tr {
   counter-increment: table;
 }
 
-table td {
+.table-estimation td {
   padding: 20px 16px;
   hyphens: auto;
   justify-items: center;
+  vertical-align: middle;
+  border: none;
 }
 
-tbody td {
+.table-estimation td {
   align-self: center;
 }
 
-tbody tr:nth-child(odd) {
+.table-estimation tbody tr:nth-child(odd) {
   background: #f7f7f7;
   border-radius: var(--RadiusBorderTable);
 }
 
-tbody tr td:first-child:before {
+.table-estimation tbody tr td:first-child:before {
   content: counter(table);
   opacity: 30%;
 }
