@@ -135,7 +135,7 @@ body {
   counter-reset: schetchik;
 }
 
-thead {
+.table-estimation thead {
   padding-bottom: 24px;
   position: sticky;
   top: -21px;
@@ -144,7 +144,7 @@ thead {
   z-index: 0;
 }
 
-th {
+.table-estimation th {
   border-bottom: 1px solid var(--ColorBorderTable);
   padding-bottom: 15px;
   padding-left: 25px;
