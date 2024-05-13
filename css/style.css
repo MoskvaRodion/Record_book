@@ -35,6 +35,7 @@ body {
 .main_content {
   display: flex;
   gap: 20px;
+  max-width: 600px;
 }
 
 .main_content-left {
@@ -159,7 +160,7 @@ body {
 
 .table-estimation tr {
   display: grid;
-  grid-template-columns: auto 270px auto auto auto;
+  grid-template-columns: auto 210px auto auto auto;
   width: 100%;
   text-align: center;
 }
