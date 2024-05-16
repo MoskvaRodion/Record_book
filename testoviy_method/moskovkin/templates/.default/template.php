@@ -11,6 +11,7 @@ while($arUser = $rsUser->Fetch()){
 
 $group = $arParam["UF_GROUP"];
 $student = $arParam["LAST_NAME"]." ". $arParam["NAME"]." ".$arParam["SECOND_NAME"];
+
 function colotEstimation($estimation){
   switch($estimation){
     case "5":
@@ -30,8 +31,10 @@ function colotEstimation($estimation){
   }
 }
 ?>
+<head>
+
+</head>
 <main>
-      <div class="wrapper">
         <div class="main_content">
           <div class="main_content-left">
             <div class="main_content-leftInternal">
@@ -49,14 +52,13 @@ function colotEstimation($estimation){
 if (!empty($arResult)){
     foreach($arResult as $arItem){?>
       <div class="semestr"><?=$arItem['NAME'];?></div>
-        <table class="table" width="867">
+        <table class="table-estimation" width="450">
             <thead>
               <tr>
                 <th scope="col">№</th>
                 <th scope="col">Дисциплина</th>
                 <th scope="col">Тип оценки</th>
                 <th scope="col">Оценка</th>
-                <th scope="col">Преподаватель</th>
               </tr>
             </thead>
             <tbody>
@@ -64,9 +66,8 @@ if (!empty($arResult)){
                 <tr>
                   <td></th>
                   <td><?=$arSubGrade['subject'];?></td>
-                  <td>Курсовая работа</td>
+                  <td><?=$arSubGrade['type'];?></td>
                   <td><span class="<?= colotEstimation($arSubGrade['estimation']); ?>"><?=$arSubGrade['estimation'];?></span></td>
-                  <td>Гренадерова С. В.</td>
                 </tr>
             <?}?>
             </tbody>
@@ -77,7 +78,6 @@ else {
     echo "Ничего не найдено";
 }
 ?>
-                </div>
               </div>
           </div>
         </div>

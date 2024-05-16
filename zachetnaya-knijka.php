@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Зачетная книжка");?>
-
+$APPLICATION->SetTitle("Зачетная книжка");
+?>
 <?
 global $USER;
 if($USER->IsAuthorized()){
@@ -12,13 +12,10 @@ if($USER->IsAuthorized()){
     ),
         false
     );
-    
 }
 else {
     LocalRedirect("/");
 }
 ?>
-
-
 
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
