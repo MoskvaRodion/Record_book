@@ -1,0 +1,26 @@
+.btn {
+  border: none;
+  border-radius: 36px;
+  background-color: #ccf5e0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 4px 16px;
+  max-width: 120px;
+
+  &:hover {
+    background-color: #16683f;
+    color: #fff;
+  }
+  &:active {
+    background: #00000088;
+  }
+}
+
+.import-form {
+  padding-bottom: 100px;
+}
+
+.import-form select {
+  padding: 10px;
+  max-width: 100%;
+}
