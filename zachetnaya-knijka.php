@@ -3,6 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Зачетная книжка");
 ?>
 <?
+
 global $USER;
 if($USER->IsAuthorized()){
 

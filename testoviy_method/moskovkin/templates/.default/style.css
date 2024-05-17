@@ -34,13 +34,14 @@ body {
 
 .main_content {
   display: flex;
-  gap: 20px;
-  max-width: inherit;
+  flex-direction: column;
+  gap: 15px;
+  width: inherit;
+  margin-top: 15px;
 }
 
 .main_content-left {
-  max-width: 280px;
-  width: 100%;
+  width: inherit;
   color: var(--leftContentColorItems);
   height: inherit;
   background: var(--BgFullHeight);
@@ -49,14 +50,13 @@ body {
 
 .main_content-leftInternal {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 80px;
 
   border-radius: var(--BorderRadiusblocks);
   background: var(--leftContentBg);
-  padding: 30px 10px 20px 10px;
+  padding: 25px 0;
   max-width: inherit;
 }
 
@@ -73,19 +73,6 @@ body {
   white-space: wrap;
   max-width: 234px;
   width: 100%;
-  hyphens: auto;
-}
-
-.main_content-leftInternal__profession {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 7px;
-}
-
-.main_content-leftInternal__profession span {
-  font-size: 0.9em;
 }
 
 .main_content-leftInternal__profession-text {
@@ -94,13 +81,14 @@ body {
   border-radius: var(--BorderRadiusItems);
   padding: 4px 12px;
   text-align: center;
+  max-width: 200px;
 }
 
 .main_content-right {
-  width: 100%;
+  width: inherit;
   background: var(--BgFullHeight);
   border-radius: var(--BorderRadiusblocks);
-  padding: 32px 12px 24px 12px;
+  padding: 25px;
 }
 
 .main_content-rightInternal {
@@ -111,24 +99,41 @@ body {
   gap: 30px;
 }
 
-.main_content-rightInternal__title {
-  text-align: start;
-}
+#semester {
+  align-self: flex-end;
+  padding: 8px 0px 8px 17px;
+  width: 200px;
 
-.main_content-rightInternal__title {
-  font-size: var(--fontSizeTitle);
-  align-self: start;
+  text-overflow: ellipsis;
+
+  border: 1px solid #00000048;
+  border-radius: 8px;
+  outline: none;
+
+  cursor: pointer;
+
+  &:hover {
+    color: #0072f5bb;
+  }
+
+  &:active {
+    background-color: #83808015;
+  }
+
+  option {
+    color: #000;
+  }
 }
 
 .table-estimation {
   border-radius: var(--BorderRadiusTable);
   width: 100%;
-  max-width: 600px;
+  max-width: inherit;
   background: var(--BgTable);
 
   display: flex;
   flex-direction: column;
-  padding: 20px 15px 30px 15px;
+  padding: 10px 30px 20px 30px;
   max-height: 400px;
   overflow-y: auto;
 
@@ -143,26 +148,24 @@ body {
 }
 
 .table-estimation thead {
-  padding-bottom: 24px;
+  padding-bottom: 25px;
   position: sticky;
   top: -21px;
   background-color: white;
-  padding-top: 15px;
+  padding-top: 20px;
   z-index: 0;
 }
 
 .table-estimation th {
   padding-bottom: 15px;
-  padding-left: 25px;
-  vertical-align: middle;
+  /* padding-left: 25px; */
   border: none;
   border-bottom: 1px solid var(--ColorBorderTable);
 }
 
 .table-estimation tr {
   display: grid;
-  grid-template-columns: auto 200px auto auto auto;
-  width: 100%;
+  grid-template-columns: auto 350px auto auto;
   text-align: center;
 }
 
@@ -176,7 +179,6 @@ body {
   padding: 20px 16px;
   hyphens: auto;
   justify-items: center;
-  vertical-align: middle;
   border: none;
   align-self: center;
 }
