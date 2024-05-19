@@ -28,11 +28,8 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-}
-
 .main_content {
+  font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: column;
   gap: 15px;
