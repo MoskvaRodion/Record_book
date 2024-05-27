@@ -1,64 +1,66 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Зачетная книжка");
-
+$APPLICATION->SetTitle("Заявления");
 global  $USER;
+
+
 if($USER->isAuthorized()) {
     
-    
     ?>
+    <head>
+        <link rel="stylesheet" href="style_form.css">
+    </head>
     <section class="news _inner">
-        <select name="" id="">
+        <select name="" id="" class="form-control">
             <option value="">Заявление на замену пропуска</option>
             <option value="">Заявление на замену студенческого</option>
             <option value="">Заявление на замену зачетной книжки</option>
-            <option value="">Заявление на отчисление</option>
+            <option value="">Заявление на отчисление</option>   
         </select>
         <div class="container">
             <!-- --------- -->
-            <form action="/print-shablon/output-data.php" class="form"  method="POST" enctype="multipart/form-data"> 
-                <input class="form-control" type="text" name="reason" placeholder="причина отчисления" autofocus>
-                <label id="second_special">обучаетесь на второй специальности одновременно</label>
+            <form action="/print-shablon/output-data.php" class="form"  method="POST" enctype="multipart/form-data" > 
+                <input class="form-control" type="text" name="reason" placeholder="причина отчисления" minlength="6" autofocus required>
+                <label class="label-10" id="second_special">Вы обучаетесь на второй специальности одновременно?</label>
                 <select  class="form-control" name="second_special" id="second_special">
-                    <option value="Нет" selected="selected">НЕТ</option>
-                    <option value="Да">ДА</option>
+                    <option value="Нет" selected="selected">Нет</option>
+                    <option value="Да">Да</option>
                 </select>
-                <input type="number" name="age" placeholder="Возраст">
-                <input type="text" name="register" placeholder="Адрес регистрации">
-                <label id="parent">Законный представитель</label>
-                <select name="parent" id="parent">
-                    <option value="мать" selected="selected">мать</option>
-                    <option value="отец">отец</option>
-                    <option value="опеку">опеку</option>
-                    <option value="представитель по доверенности">представитель по доверенности</option>
+                <input type="number"  class="form-control" id="validAge" name="age" placeholder="Возраст" maxlength="2" required>
+                <input type="text" class="form-control" id="address" name="register" placeholder="Адрес регистрации" disabled required>
+                <label class="label-10" id="parent" >Законный представитель</label>
+                <select name="parent" id="parent" class="form-control">
+                    <option value="мать" selected="selected">Мать</option>
+                    <option value="отец">Отец</option>
+                    <option value="опеку">Опеку</option>
+                    <option value="представитель по доверенности">Представитель по доверенности</option>
                 </select>
-                <input type="text" placeholder="Имя законного представителя" name="parent_name">
-                <button type="submit" name="button" value="delete">Сформировать</button>
+                <input type="text" class="form-control" placeholder="ФИО законного представителя полностью" name="parent_name" required>
+                <button type="submit"  class="submit btn btn_main" name="button" value="delete">Сформировать</button>
             </form>
             <!-- ------- -->
             <form action="/print-shablon/output-data.php" class="form"  method="POST" enctype="multipart/form-data"> 
                 <label for="reason">Причина замены пропуска</label>
-                <select name="reason" id="reason">
+                <select name="reason" id="reason" class="form-control">
                     <option value="был утерян" selected="selected">Потерял</option>
                     <option value="не работает">Не работает</option>
                 </select>
-                <button type="submit" name="button" value="pass">Сформировать</button>
+                <button  class="submit btn btn_main" type="submit" name="button" value="pass">Сформировать</button>
             </form>
         </div>
     </section>
-    <style>
-    form {
-        display: flex;
-        flex-direction: column;
+    <script>
+        const validAge = document.querySelector('#validAge');
+        const ADDRESS = document.querySelector('#address');
         
-    }
+        validAge.addEventListener('change', () => {
+            (validAge.value < 18) ? ADDRESS.disabled = false : ADDRESS.disabled = true
+        })
+    </script>
     <?
+
 }   
 else {
     LocalRedirect("/");
 }
-
-
-
-
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

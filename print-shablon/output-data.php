@@ -20,7 +20,7 @@ if ($_POST["button"]=="delete"){
     $parent_name = explode(" ", $_POST["parent_name"]);
     $short_parent_name = $parent_name[0] ." ". mb_substr($parent_name[1], 0, 1).".".mb_substr($parent_name[2], 0, 1).".";
 
-    $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('delete.docx');
+    $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/delete.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
     $templateProcessor->setValue('LAST_NAME', $LAST_NAME);
     $templateProcessor->setValue('NAME', $NAME);
@@ -35,13 +35,13 @@ if ($_POST["button"]=="delete"){
     $templateProcessor->setValue('NAME_PARENT', $short_parent_name);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
 
-    $templateProcessor->saveAs("v4.docx");
+    $templateProcessor->saveAs("files/v4.docx");
 
     header("Content-Disposition: attachment; filename=Отчисление_".$LAST_NAME.".docx");
-    echo file_get_contents("v4.docx");
+    echo file_get_contents("files/v4.docx");
 }
 else if ($_POST["button"]=='pass'){
-    $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('pass.docx');
+    $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/pass.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
     $templateProcessor->setValue('LAST_NAME', $LAST_NAME);
     $templateProcessor->setValue('NAME', $NAME);
@@ -49,9 +49,9 @@ else if ($_POST["button"]=='pass'){
     $templateProcessor->setValue('REASON', $_POST["reason"]);
     $templateProcessor->setValue('NAME_STUDENT', $short_name);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
-    $templateProcessor->saveAs("v4.docx");
+    $templateProcessor->saveAs("files/v4.docx");
     header("Content-Disposition: attachment; filename=Замена_пропуска_".$LAST_NAME.".docx");
-    echo file_get_contents("v4.docx");
+    echo file_get_contents("files/v4.docx");
 }
 
 
