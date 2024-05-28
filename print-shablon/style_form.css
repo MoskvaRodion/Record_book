@@ -8,15 +8,19 @@ form {
         background: #16683f;
         align-items: center;
     }
-    #address:disabled{
+#address:disabled{
         background: #a9c9b9;
     }
-    form > * {
+form > * {
         max-width: 400px;
         width: 100%;
     }
-    .label-10 {
+.label-10 {
         display: inline-block;
         margin-bottom: -8px;
 
     }
+.allSelects {
+	margin-bottom: 20px;
+	padding: 6px 12px;
+}

@@ -126,16 +126,21 @@ elseif ($_POST["button"]=='change'){
     $templateProcessor->setValue('NAME', $NAME);
     $templateProcessor->setValue('SECOND_NAME', $SECOND_NAME);
 
-    $templateProcessor->setValue('BEFORE', $LAST_NAME . $NAME . $SECOND_NAME);
+    $templateProcessor->setValue('BEFORE', $LAST_NAME ." ". $NAME ." ". $SECOND_NAME);
+    $templateProcessor->setValue('CHANGE', $_POST["CHANGE"]);
     $templateProcessor->setValue('AFTER', $_POST["AFTER"]);
-    $templateProcessor->setValue('AFTER', $_POST["AFTER"]);
+    $templateProcessor->setValue('REASON', $_POST["REASON"]);
 
-    $templateProcessor->setValue('DOCUMENT', $_POST["DOCUMENT"]);
-
+    if ($_POST["REASON"] == "Вступление в брак"){
+        $templateProcessor->setValue('DOCUMENT', "свидетельство о браке");
+    }else{
+        $templateProcessor->setValue('DOCUMENT', "свидетельство о смене имени");
+    }
+    $templateProcessor->setValue('NAME_STUDENT', $short_name);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
     $templateProcessor->saveAs("files/v4.docx");
 
-    header("Content-Disposition: attachment; filename=Смена_ФИО".$LAST_NAME.".docx");
+    header("Content-Disposition: attachment; filename=Смена_ФИО_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
 elseif ($_POST["button"]=='translation-specialty'){
@@ -152,7 +157,7 @@ elseif ($_POST["button"]=='translation-specialty'){
     $templateProcessor->setValue('DATA', date('d.m.Y'));
     $templateProcessor->saveAs("files/v4.docx");
 
-    header("Content-Disposition: attachment; filename=Смена_специальности ".$LAST_NAME.".docx");
+    header("Content-Disposition: attachment; filename=Смена_специальности_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
 else if ($_POST["button"]=='transfer-to-another-college'){

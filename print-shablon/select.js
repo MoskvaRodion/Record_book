@@ -11,7 +11,7 @@ SELECTS.addEventListener("change", () => {
     FORM[lastIndex].style.display = "none";
 
     let index = SELECTS.value;
-    FORM[index].style.display = "block";
+    FORM[index].style.display = "flex";
 
     lastIndex = index;
   }
