@@ -17,9 +17,6 @@ $short_name = $LAST_NAME ." ". mb_substr($NAME, 0, 1).".".mb_substr($SECOND_NAME
 // echo '</pre>';
 
 if ($_POST["button"]=="delete"){
-    $parent_name = explode(" ", $_POST["parent_name"]);
-    $short_parent_name = $parent_name[0] ." ". mb_substr($parent_name[1], 0, 1).".".mb_substr($parent_name[2], 0, 1).".";
-
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/delete.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
     $templateProcessor->setValue('LAST_NAME', $LAST_NAME);
@@ -32,7 +29,7 @@ if ($_POST["button"]=="delete"){
 
     $templateProcessor->setValue('NAME_STUDENT', $short_name);
     $templateProcessor->setValue('PARENT', $_POST["parent"]);
-    $templateProcessor->setValue('NAME_PARENT', $short_parent_name);
+    $templateProcessor->setValue('NAME_PARENT', $parent_name);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
 
     $templateProcessor->saveAs("files/v4.docx");
@@ -161,9 +158,6 @@ elseif ($_POST["button"]=='translation-specialty'){
     echo file_get_contents("files/v4.docx");
 }
 else if ($_POST["button"]=='transfer-to-another-college'){
-    $parent_name = explode(" ", $_POST["parent_name"]);
-    $short_parent_name = $parent_name[0] ." ". mb_substr($parent_name[1], 0, 1).".".mb_substr($parent_name[2], 0, 1).".";
-
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/transfer-to-another-college.docx');
 
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
@@ -174,7 +168,7 @@ else if ($_POST["button"]=='transfer-to-another-college'){
 
     $templateProcessor->setValue('NAME_STUDENT', $short_name);
     $templateProcessor->setValue('PARENT', $_POST["parent"]);
-    $templateProcessor->setValue('NAME_PARENT', $short_parent_name);
+    $templateProcessor->setValue('NAME_PARENT', $parent_name);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
 
     $templateProcessor->saveAs("files/v4.docx");
