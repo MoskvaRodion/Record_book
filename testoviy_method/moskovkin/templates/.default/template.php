@@ -3,6 +3,7 @@
 use function PHPSTORM_META\type;
 
  if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+ 
 $rsUser = CUser::GetByID($arParams["USER_ID"]);
 
 while($arUser = $rsUser->Fetch()){
@@ -12,6 +13,26 @@ while($arUser = $rsUser->Fetch()){
 $group = $arParam["UF_GROUP"];
 $student = $arParam["LAST_NAME"]." ". $arParam["NAME"]." ".$arParam["SECOND_NAME"];
 
+/** 
+*Вывод полной специальности
+*@param string $group группа
+*@return string возвращает полное название специальности 
+*/
+function nameSpecialnost($group){
+  $dictSpec =  [
+    "ИС" => "Информационные системы и программирование",
+    "БАС" => "Обеспечение информационной безопасности автоматизированных систем",
+    "САД" => "Сетевое и системное администрирование",
+  ];
+  $shortName = substr($group, 0, strpos($group, "-"));
+  return $dictSpec[$shortName];
+}
+
+/** 
+*Для изменения backgroung у оценки
+*@param string $estimation оценка
+*@return string возвращает название класса css 
+*/
 function colotEstimation($estimation){
   switch($estimation){
     case "5":
@@ -37,17 +58,17 @@ function colotEstimation($estimation){
             <div class="main_content-leftInternal">
                 <p class="main_content-leftInternal__group"><?= $group ?></p>
                 <h1 class="main_content-leftInternal__title"><?= $student?></h1>
-                <p class="main_content-leftInternal__profession-text">Информационные системы и програмирование</p>
+                <p class="main_content-leftInternal__profession-text"><?= nameSpecialnost($group)?></p>
             </div>
         </div>
             <div class="main_content-right">
                 <div class="main_content-rightInternal">
                     <select name="semester" id="semester">
-                        <option selected value="semester1">1 семестр 2022-2023 у.г.</option>
+                        <option selected value="semesterAll">Все семестры</option>
+                        <option value="semester1">1 семестр 2022-2023 у.г.</option>
                         <option value="semester2">2 семестр 2023-2024 у.г.</option>
                     </select>
                     <?
-        
         if (!empty($arResult)){
             foreach($arResult as $arItem){?>
               <div class="semestr"><?=$arItem['NAME'];?></div>
@@ -56,7 +77,7 @@ function colotEstimation($estimation){
                     <tr>
                       <th scope="col">№</th>
                       <th scope="col">Дисциплина</th>
-                      <th scope="col">Тип оценки</th>
+                      <th scope="col">Форма контроля</th>
                       <th scope="col">Оценка</th>
                     </tr>
                   </thead>
