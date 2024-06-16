@@ -24,7 +24,7 @@ if($USER->isAuthorized()) {
         </select>
         <div class="container">
             <div style="visibility: hidden;"></div>
-            <!-- --------- -->
+
             <form action="/print-shablon/output-data.php" class="form form-status"  method="POST" enctype="multipart/form-data"  style="display: none;"> 
                 <label class="label-10" for="reason">Причина замены пропуска</label>
                 <select name="reason" id="reason" class="form-control" selected="selected">
@@ -58,31 +58,28 @@ if($USER->isAuthorized()) {
                     <option value="опеку">Опеку</option>
                     <option value="представитель по доверенности">Представитель по доверенности</option>
                 </select>
-                <input type="text" class="form-control" placeholder="ФИО законного представителя полностью" name="parent_name" required>
+                <input type="text" class="form-control" placeholder="Фамилия И.О. законного представителя" name="parent_name" required>
                 <button type="submit"  class="submit btn btn_main" name="button" value="delete">Сформировать</button>
             </form>
-            <!-- ---------- -->
-            <!-- ---------- -->
 
-            <!-- ---------- -->
             <form action="/print-shablon/output-data.php" class="form form-status"  method="POST" enctype="multipart/form-data"  style="display: none;">
                 <label class="label-10" for="FROM">Начало отпуска</label>
-                <input  class="form-control" name="FROM" type="date" require>
+                <input  class="form-control" name="FROM" type="date" required>
                 <label class="label-10" for="TO">Окончание отпуска</label>
-                <input class="form-control" name="TO" type="date" require>
+                <input class="form-control" name="TO" type="date" required>
                 <span>Не забудьте приложить копию повестки военного комиссариата</span>
                 <button  class="submit btn btn_main" type="submit" name="button" value="army">Сформировать</button>
             </form>
-            <!-- ---------- -->
+
             <form action="/print-shablon/output-data.php" class="form form-status"  method="POST" enctype="multipart/form-data"  style="display: none;">
                 <label class="label-10" for="FROM">Начало отпуска</label>
-                <input  class="form-control" name="FROM" type="date" require>
+                <input  class="form-control" name="FROM" type="date" required>
                 <label class="label-10" for="TO">Окончание отпуска</label>
-                <input  class="form-control" name="TO" type="date" require>
+                <input  class="form-control" name="TO" type="date" required>
                 <span>Не забудьте приложить копию медицинской справки</span>
                 <button  class="submit btn btn_main" type="submit" name="button" value="health">Сформировать</button>
             </form>
-             <!-- ---------- -->
+
             <form action="/print-shablon/output-data.php" class="form form-status"  method="POST" enctype="multipart/form-data"  style="display: none;">
                 <label class="label-10">Выбирите что изменяете</label>
                 <select name="CHANGE"  class="form-control">
@@ -90,7 +87,7 @@ if($USER->isAuthorized()) {
                     <option value="имя">Имя</option>
                     <option value="отчество">Отчество</option>
                 </select>
-                <input  class="form-control" type="text" name="AFTER" placeholder="ФИО полностью после изменения" require>
+                <input  class="form-control" type="text" name="AFTER" placeholder="ФИО полностью после изменения" required>
                 <label class="label-10">Укажите причину замены ФИО</label>
                 <select name="REASON" id=""  class="form-control">
                     <option value="вступлением в брак" selected="selected">Вступление в брак</option>
@@ -99,7 +96,7 @@ if($USER->isAuthorized()) {
                 <span>Не забудьте приложить копию этого документа</span>
                 <button  class="submit btn btn_main" type="submit" name="button" value="change">Сформировать</button>
             </form>
-            <!-- ------------------- -->
+
             <form action="/print-shablon/output-data.php" class="form form-status"  method="POST" enctype="multipart/form-data" style="display: none;">
                 <div>
                     <input type="radio" name="choice" value="spec" checked>
@@ -109,18 +106,18 @@ if($USER->isAuthorized()) {
                     <input type="radio"  name="choice" value="formLearning">
                     <label for="choice">Форма обучения</label>
                 </div>
-                <input type="text" class="form-control" name="ANOTHER_SPECIALTY" id="ANOTHER_SPECIALTY" placeholder="Специальность" require>
+                <input type="text" class="form-control" name="ANOTHER_SPECIALTY" id="ANOTHER_SPECIALTY" placeholder="Специальность" required>
                 <select name="FORM_OF_EDUCATION" class="form-control" id="FORM_OF_EDUCATION" style="display: none;">
-                    <option value="Очная" selected="selected">Очная</option>
+                    <option value="Очная">Очная</option>
                     <option value="Заочная">Заочная</option>
                 </select>
                 <span>Не забудте приложить копию зачетной книжки</span>
                 <button  class="submit btn btn_main" type="submit" name="button" value="translation-specialty">Сформировать</button>
             </form>
-            <!-- ------------------- -->
+
             <form action="/print-shablon/output-data.php" class="form form-status"  method="POST" enctype="multipart/form-data" style="display: none;">
                 <label class="label-10" for="ORG">Наименование принимающей организации</label>
-                <input type="text" class="form-control" name="ORG" require>
+                <input type="text" class="form-control" name="ORG" required>
                 <label class="label-10" id="parent" >Законный представитель</label>
                 <select name="PARENT" id="parent" class="form-control">
                     <option value="мать" selected="selected">Мать</option>
@@ -128,7 +125,7 @@ if($USER->isAuthorized()) {
                     <option value="опеку">Опеку</option>
                     <option value="представитель по доверенности">Представитель по доверенности</option>
                 </select>
-                <input type="text" class="form-control" placeholder="ФИО законного представителя полностью" name="parent_name" required>
+                <input type="text" class="form-control" placeholder="Фамилия И.О. законного представителя" name="parent_name" required>
                 <span>Не забудте приложить справку о переводе</span>
                 <button  class="submit btn btn_main" type="submit" name="button" value="transfer-to-another-college">Сформировать</button>
             </form>

@@ -12,11 +12,9 @@ $NAME = $arParam["NAME"];
 $SECOND_NAME = $arParam["SECOND_NAME"];
 $short_name = $LAST_NAME ." ". mb_substr($NAME, 0, 1).".".mb_substr($SECOND_NAME, 0, 1).".";
 
-// echo '<pre>';
-// var_dump($_POST);
-// echo '</pre>';
-
+// форма отчисления по свобственному желанию
 if ($_POST["button"]=="delete"){
+
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/delete.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
     $templateProcessor->setValue('LAST_NAME', $LAST_NAME);
@@ -29,7 +27,7 @@ if ($_POST["button"]=="delete"){
 
     $templateProcessor->setValue('NAME_STUDENT', $short_name);
     $templateProcessor->setValue('PARENT', $_POST["parent"]);
-    $templateProcessor->setValue('NAME_PARENT', $parent_name);
+    $templateProcessor->setValue('NAME_PARENT', $_POST["parent_name"]);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
 
     $templateProcessor->saveAs("files/v4.docx");
@@ -37,6 +35,7 @@ if ($_POST["button"]=="delete"){
     header("Content-Disposition: attachment; filename=Отчисление_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// замена пропуска
 else if ($_POST["button"]=='pass'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/pass.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
@@ -50,6 +49,7 @@ else if ($_POST["button"]=='pass'){
     header("Content-Disposition: attachment; filename=Замена_пропуска_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// замена студенческого билета
 elseif ($_POST["button"]=='duplicate-IDcard'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/duplicate-student-ID-card.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
@@ -65,6 +65,7 @@ elseif ($_POST["button"]=='duplicate-IDcard'){
     header("Content-Disposition: attachment; filename=Дубликат_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// замена зачетной книжки
 elseif ($_POST["button"]=='duplicate-record-book'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/duplicate-record-book.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
@@ -80,6 +81,7 @@ elseif ($_POST["button"]=='duplicate-record-book'){
     header("Content-Disposition: attachment; filename=Дубликат_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// Академический_отпуск (армия)
 elseif ($_POST["button"]=='army'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/academic-leave-army.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
@@ -98,6 +100,7 @@ elseif ($_POST["button"]=='army'){
     header("Content-Disposition: attachment; filename=Академический_отпуск".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// Академический_отпуск (по сосотоянию здоровья)
 elseif ($_POST["button"]=='health'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/academic-leave-health.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
@@ -116,6 +119,7 @@ elseif ($_POST["button"]=='health'){
     header("Content-Disposition: attachment; filename=Академический_отпуск".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// смена ФИО
 elseif ($_POST["button"]=='change'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/name-change.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
@@ -140,16 +144,21 @@ elseif ($_POST["button"]=='change'){
     header("Content-Disposition: attachment; filename=Смена_ФИО_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// смена специальности/формы обучения
 elseif ($_POST["button"]=='translation-specialty'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/translation-specialty.docx');
     $templateProcessor->setValue('GROUP', $arParam["UF_GROUP"]);
     $templateProcessor->setValue('LAST_NAME', $LAST_NAME);
     $templateProcessor->setValue('NAME', $NAME);
     $templateProcessor->setValue('SECOND_NAME', $SECOND_NAME);
-
-    $templateProcessor->setValue('FORM_OF_EDUCATION', $_POST["FORM_OF_EDUCATION"]);
-    $templateProcessor->setValue('ANOTHER_SPECIALTY', $_POST["ANOTHER_SPECIALTY"]);
-
+    if ($_POST['choice'] == "spec"){
+        $templateProcessor->setValue('ANOTHER_SPECIALTY', $_POST["ANOTHER_SPECIALTY"]);
+        $templateProcessor->setValue('FORM_OF_EDUCATION', "");
+    }else {
+        $templateProcessor->setValue('FORM_OF_EDUCATION', $_POST["FORM_OF_EDUCATION"]);
+        $templateProcessor->setValue('ANOTHER_SPECIALTY', "");
+    }
+    
     $templateProcessor->setValue('NAME_STUDENT', $short_name);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
     $templateProcessor->saveAs("files/v4.docx");
@@ -157,6 +166,7 @@ elseif ($_POST["button"]=='translation-specialty'){
     header("Content-Disposition: attachment; filename=Смена_специальности_".$LAST_NAME.".docx");
     echo file_get_contents("files/v4.docx");
 }
+// переход в другой колледж
 else if ($_POST["button"]=='transfer-to-another-college'){
     $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('files/transfer-to-another-college.docx');
 
@@ -168,7 +178,7 @@ else if ($_POST["button"]=='transfer-to-another-college'){
 
     $templateProcessor->setValue('NAME_STUDENT', $short_name);
     $templateProcessor->setValue('PARENT', $_POST["parent"]);
-    $templateProcessor->setValue('NAME_PARENT', $parent_name);
+    $templateProcessor->setValue('NAME_PARENT', $_POST["$parent_name"]);
     $templateProcessor->setValue('DATA', date('d.m.Y'));
 
     $templateProcessor->saveAs("files/v4.docx");
