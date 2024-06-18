@@ -14,21 +14,6 @@ $group = $arParam["UF_GROUP"];
 $student = $arParam["LAST_NAME"]." ". $arParam["NAME"]." ".$arParam["SECOND_NAME"];
 
 /** 
-*Вывод полной специальности
-*@param string $group группа
-*@return string возвращает полное название специальности 
-*/
-function nameSpecialnost($group){
-  $dictSpec =  [
-    "ИС" => "Информационные системы и программирование",
-    "БАС" => "Обеспечение информационной безопасности автоматизированных систем",
-    "САД" => "Сетевое и системное администрирование",
-  ];
-  $shortName = substr($group, 0, strpos($group, "-"));
-  return $dictSpec[$shortName];
-}
-
-/** 
 *Для изменения backgroung у оценки
 *@param string $estimation оценка
 *@return string возвращает название класса css 
