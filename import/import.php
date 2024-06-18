@@ -20,7 +20,7 @@ if(!$_FILES['file']){
 	$file = $_FILES['file']['tmp_name'];
 	
 	$spreadsheet = IOFactory::load($file);
-$sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+	$sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
 	$i = 10;
 	foreach ($sheetData as $k => $row) {
@@ -40,14 +40,14 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 		}
 		if ($k == 8) {
 			foreach ($sheetData[8] as $c => $cell) {
-				if ($c >= "E" && $cell != null) {
+				if ($c >= "E" && $cell != null && $cell != "#NULL!") {
 					$predmets[$c] = $cell;
 				}
 			}
 		}
 		if ($k == 9) {
 			foreach ($sheetData[9] as $c => $cell) {
-				if ($c >= "E" && $cell != null) {
+				if ($c >= "E" && $cell != null && $cell != "#NULL!") {
 					$type[$c] = $cell;
 				}
 			}
@@ -67,16 +67,31 @@ $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 			$i++;
 		}
 	}
+
 	CModule::IncludeModule('iblock');
-	$arFilter = ['IBLOCK_ID' => 11, 'NAME' => $gruppa]; // выберет потомков без учета активности
+	$arFilter = ['IBLOCK_ID' => 11, 'NAME' => $gruppa]; 
 	$rsSect = CIBlockSection::GetList(['ID' => 'asc'], $arFilter);
 	if ($arSect = $rsSect->GetNext()) {
 		$id_section_gruppy = $arSect['ID'];
 	}
+	else {
+		$bs = new CIBlockSection;
+		$arFields = [
+			"ACTIVE" => 'Y',
+			"IBLOCK_ID" => 11,
+			"NAME" => $gruppa,
+			"SORT" => 500,
+		];
+		$id_section_gruppy = $bs->Add($arFields);
+		$res = ($id_section_gruppy > 0);
+		if (!$res) {
+			echo $bs->LAST_ERROR;
+		} 
+	}
 
 	$studentsName = array_column($students, 'NAME');
 	$sectionsStudents = [];
-	$arFilter = ['IBLOCK_ID' => 11, 'NAME' => $studentsName]; // выберет потомков без учета активности
+	$arFilter = ['IBLOCK_ID' => 11, 'NAME' => $studentsName];
 	$rsSect = CIBlockSection::GetList(['ID' => 'asc'], $arFilter);
 	while ($arSect = $rsSect->GetNext()) {
 		$sectionsStudents[$arSect['ID']] = $arSect['NAME'];

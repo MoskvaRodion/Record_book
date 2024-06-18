@@ -28,11 +28,8 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-}
-
 .main_content {
+font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -95,14 +92,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 30px;
 }
 
-#semester {
+#select_semester {
   align-self: flex-end;
-  padding: 8px 0px 8px 17px;
-  width: 200px;
+  padding: 8px 5px 8px 17px;
+  
 
   text-overflow: ellipsis;
 
@@ -192,3 +188,32 @@ body {
   content: counter(table);
   opacity: 40%;
 }
+form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 8px;
+        padding: 40px;
+        color: white;
+        background: #16683f;
+        align-items: center;
+    }
+    #address:disabled{
+        background: #a9c9b9;
+    }
+    form > * {
+        max-width: 400px;
+        width: 100%;
+    }
+    .label-10 {
+        display: inline-block;
+        margin-bottom: -8px;
+
+    }
+
+    .semester_name{
+      padding: 13px;
+      font-weight: 400;
+      font-size: 21px;
+      text-align: center;
+    }

@@ -50,7 +50,8 @@ function colotEstimation($estimation){
     default:
       return "";
   }
-}
+};
+$arParamsTrans = array("replace_space"=>"-","replace_other"=>"-");
 ?>
 
 <div class="main_content">
@@ -58,20 +59,23 @@ function colotEstimation($estimation){
             <div class="main_content-leftInternal">
                 <p class="main_content-leftInternal__group"><?= $group ?></p>
                 <h1 class="main_content-leftInternal__title"><?= $student?></h1>
-                <p class="main_content-leftInternal__profession-text"><?= nameSpecialnost($group)?></p>
+                <p class="main_content-leftInternal__profession-text"><?= $arResult["GROUP_BIG_NAME"] ?></p>
             </div>
         </div>
             <div class="main_content-right">
                 <div class="main_content-rightInternal">
-                    <select name="semester" id="semester">
+                    <select name="semester" id="select_semester" >
                         <option selected value="semesterAll">Все семестры</option>
-                        <option value="semester1">1 семестр 2022-2023 у.г.</option>
-                        <option value="semester2">2 семестр 2023-2024 у.г.</option>
+                        <?foreach ($arResult["ITEMS"] as $arItem){?>
+                          <option value="<?= Cutil::translit($arItem["NAME"],"ru",$arParamsTrans)?>"><?=$arItem['NAME'];?></option>
+                        <?}?>
                     </select>
+                    <div class="semestrs">
                     <?
-        if (!empty($arResult)){
-            foreach($arResult as $arItem){?>
-              <div class="semestr"><?=$arItem['NAME'];?></div>
+        if (!empty($arResult["ITEMS"])){
+            foreach($arResult["ITEMS"] as $arItem){?>
+              <div class="semestr <?= Cutil::translit($arItem["NAME"],"ru",$arParamsTrans)?>">
+                <div class="semester_name"><?=$arItem['NAME'];?></div>
                 <table class="table-estimation">
                   <thead>
                     <tr>
@@ -92,14 +96,39 @@ function colotEstimation($estimation){
                     <?}?>
                     </tbody>
                 </table>
+              </div>
             <?}
         }
         else {
             echo "Ничего не найдено";
         }
         ?>
-        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+      const SELECTS = document.getElementById("select_semester");
+      const SEMESTRS = document.querySelectorAll(".semestrs .semestr");
+      SELECTS.addEventListener("change", () => {
+        if (SELECTS.value != "semesterAll"){
+          SEMESTRS.forEach(el => {
+            if (!el.classList.contains(SELECTS.value)){
+              el.style.display = "none";
+            }
+            else {
+              el.style.display = "block";
+            }
+          })
+        }
+        else {
+          SEMESTRS.forEach(el => {
+            if (!el.classList.contains(SELECTS.value)){
+              el.style.display = "block";
+            }
+            
+          })
+        }
+      });
+  </script>

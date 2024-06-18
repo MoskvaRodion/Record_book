@@ -2,19 +2,48 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Загрузка ведомости");
 
-?>
-	<? global $USER;
+?>	<? global $USER;
 if($USER->isAuthorized() && in_array(1, $USER->GetUserGroupArray())){?>
 <section class="news _inner">
     <div class="container">
         <div class="">
             <form class="import-form" action="/import/import.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" value="" accept=".xlsx" multiple><br><br>
-                <button class="btn" type="submit">Выполнить</button>
+                <button class="btn_save_file" type="submit">Выполнить</button>
             </form>
         </div>
     </div>
 </section>
+<style>
+    
+.btn_save_file {
+  border: none;
+  border-radius: 36px;
+  background-color: #ccf5e0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 4px 16px;
+  max-width: 120px;
+
+  &:hover {
+    background-color: #16683f;
+    color: #fff;
+  }
+  &:active {
+    background: #00000088;
+  }
+}
+.import-form {
+  padding-bottom: 100px;
+  margin-top: 20px;
+}
+
+.import-form select {
+  padding: 10px;
+  max-width: 100%;
+}
+
+</style>
 <script>
     function IsJsonString(str) {
         try {
